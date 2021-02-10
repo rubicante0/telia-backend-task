@@ -27,7 +27,7 @@ Our product catalog:
 |Oculus Rift S|35|30|25|35|Yes
 |HTC Vive Cosmos|45|40|35|45|Yes
 
-### Requirements
+### Business requirements
 Expose a REST HTTP API, with operations for listing products, choosing products and calculating the total price for renting a chosen product
 * Provide a product list
     * user should be able to get products available for rent
@@ -52,3 +52,8 @@ Expose a REST HTTP API, with operations for listing products, choosing products 
     * price = (initial charge) 35 + (what they would pay without commitment)(2 * 35) = 105 EUR
 * User chooses a Nintendo Switch, no commitment, and wants to see the price they would pay if they returned the equipment after 7 months:
     * price = (initial charge) 17 + (what they would pay without commitment)(7 * 17) = 136 EUR
+
+### Other requirements
+* Add basic authentication to API endpoints
+* Cache API responses
+* Provide a way to run the application in Docker
