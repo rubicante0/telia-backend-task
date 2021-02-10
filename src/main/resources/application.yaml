@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    initialization-mode: always
+    url: jdbc:h2:file:./.dev/local;INIT=CREATE SCHEMA IF NOT EXISTS DEV_DB
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      schema: DEV_DB
+  flyway:
+    enabled: true
+    schemas: DEV_DB
+    baseline-on-migrate: true
+    url: jdbc:h2:file:./.dev/local;INIT=CREATE SCHEMA IF NOT EXISTS DEV_DB # fixme: this should not be needed, SpringBoot 2.2.1 works without this
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: true
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    root: info
