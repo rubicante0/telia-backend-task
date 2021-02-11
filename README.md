@@ -57,3 +57,4 @@ Expose a REST HTTP API, with operations for listing products, choosing products 
 * Add basic authentication to API endpoints
 * Cache API responses
 * Provide a way to run the application in Docker
+* Document the API
