@@ -46,6 +46,9 @@ Expose a REST HTTP API, with operations for listing products, choosing products 
     * price = initial charge + (RETURN_MONTHS * price per month, based on commitment)
         * if user provides a non-default number for RETURN_MONTHS, and has chosen a commitment period:
             * price = initial charge + (RETURN_MONTHS * no commitment price per month)
+    * user can provide a currency shorthand (e.g. SEK) in the request and get prices in that currency; default is EUR
+        * the currency exchange rate used to calculate prices in another currency should be not older than 1 hour
+            * https://www.lb.lt/webservices/FxRates/ is a good source of fx rates (feel free to use another external service for this purpose)
  
 ### Examples of price calculations
 * User chooses an Oculus Quest 2, a commitment of 6 months, and wants to see the price they would pay if they returned the equipment after 2 months: 
@@ -54,7 +57,9 @@ Expose a REST HTTP API, with operations for listing products, choosing products 
     * price = (initial charge) 17 + (what they would pay without commitment)(7 * 17) = 136 EUR
 
 ### Other requirements
+* Please fork this repository and apply your changes on top of it
+    * if you want to use another DB or cache provider, please do so
 * Add basic authentication to API endpoints
-* Cache API responses
+* Use cache in your solution to reduce the strain on the DB and the CPU
 * Provide a way to run the application in Docker
 * Document the API
