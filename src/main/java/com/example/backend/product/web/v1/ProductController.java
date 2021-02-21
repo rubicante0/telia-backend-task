@@ -3,6 +3,7 @@ package com.example.backend.product.web.v1;
 import com.example.backend.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +21,12 @@ public class ProductController {
         return service.findRentable().stream()
                 .map(ExternalProduct::from)
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("{productId}")
+    public ExternalProductWithCommitments getDetails(@PathVariable("productId") Long productId) {
+        return service.getProductWithPrices(productId)
+                .map(ExternalProductWithCommitments::from)
+                .orElseThrow(() -> new ProductNotFoundException("Product not found with id:" + productId));
     }
 }
