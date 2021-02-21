@@ -6,12 +6,12 @@ import lombok.Data;
 
 @Data
 @Builder(setterPrefix = "with")
-public class ExternalRentableProduct {
+public class ExternalProduct {
     private final Long id;
     private final String title;
 
-    public static ExternalRentableProduct from(Product product) {
-        return ExternalRentableProduct.builder()
+    public static ExternalProduct from(Product product) {
+        return ExternalProduct.builder()
                 .withId(product.getId())
                 .withTitle(product.getTitle())
                 .build();

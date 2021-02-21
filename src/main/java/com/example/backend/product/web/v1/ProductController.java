@@ -16,9 +16,9 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping
-    public List<ExternalRentableProduct> findRentable() {
+    public List<ExternalProduct> findAllRentable() {
         return service.findRentable().stream()
-                .map(ExternalRentableProduct::from)
+                .map(ExternalProduct::from)
                 .collect(Collectors.toList());
     }
 }
