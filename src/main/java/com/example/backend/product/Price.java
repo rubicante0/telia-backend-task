@@ -1,5 +1,7 @@
 package com.example.backend.product;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +17,8 @@ import java.math.BigDecimal;
 @Table(name = "price")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder(setterPrefix = "with")
 public class Price {
 
     @Id
