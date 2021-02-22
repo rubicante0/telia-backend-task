@@ -21,3 +21,8 @@ spring:
 logging:
   level:
     root: info
+
+product:
+  cache:
+    enabled: true
+    duration: 1h
