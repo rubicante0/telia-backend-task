@@ -33,3 +33,8 @@ currency:
     duration: 1h
   web-service:
     endpoint: https://api.exchangeratesapi.io
+
+security:
+  web:
+    login: backend
+    password: backend
