@@ -63,3 +63,14 @@ Expose a REST HTTP API, with operations for listing products, choosing products 
 * Use cache in your solution to reduce the strain on the DB and the CPU
 * Provide a way to run the application in Docker
 * Document the API
+
+## Implementation details for reviewer
+
+* OpenAPI documentation is available at http://localhost:8080/swagger-ui.html
+* It is only possible to get exchange rates for specified day, not hour (https://www.lb.lt/webservices/FxRates/ does not support this either).
+* It is possible to enable/disable caches via `product.cache.enabled` and `currency.cache.enabled` application properties.
+* To change login/password for basic authentication please use application properties `security.web.login` and `security.web.password`.
+* To create Docker image use: 
+    ```shell
+    mvn spring-boot:build-image
+    ```
