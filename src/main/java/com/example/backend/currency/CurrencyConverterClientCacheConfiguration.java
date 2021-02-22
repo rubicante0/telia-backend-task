@@ -1,4 +1,4 @@
-package com.example.backend.product;
+package com.example.backend.currency;
 
 import com.example.backend.common.CacheProperties;
 import com.github.benmanes.caffeine.cache.Caffeine;
@@ -13,25 +13,25 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Collections;
 
-import static com.example.backend.product.ProductConstants.PRODUCT_CACHE_NAME;
+import static com.example.backend.currency.CurrencyConstants.CURRENCY_CACHE_NAME;
 
 @Configuration
-public class ProductServiceCacheConfiguration {
+public class CurrencyConverterClientCacheConfiguration {
 
     @Configuration
-    @ConditionalOnProperty(name = "product.cache.enabled", havingValue = "true")
+    @ConditionalOnProperty(name = "currency.cache.enabled", havingValue = "true")
     public static class CacheConfiguration {
 
-        @Bean(name = "productCacheProperties")
-        @ConfigurationProperties("product.cache")
-        public CacheProperties productCacheProperties() {
+        @Bean(name = "currencyCacheProperties")
+        @ConfigurationProperties("currency.cache")
+        public CacheProperties currencyCacheProperties() {
             return new CacheProperties();
         }
 
         @Bean
-        public CacheManager productServiceCacheManager() {
-            CacheProperties properties = productCacheProperties();
-            CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager(PRODUCT_CACHE_NAME);
+        public CacheManager currencyConverterClientCacheManager() {
+            CacheProperties properties = currencyCacheProperties();
+            CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager(CURRENCY_CACHE_NAME);
             caffeineCacheManager.setCaffeine(Caffeine.newBuilder()
                     .expireAfterAccess(properties.getDuration()));
             return caffeineCacheManager;
@@ -39,12 +39,12 @@ public class ProductServiceCacheConfiguration {
     }
 
     @Configuration
-    @ConditionalOnProperty(name = "product.cache.enabled", havingValue = "false", matchIfMissing = true)
+    @ConditionalOnProperty(name = "currency.cache.enabled", havingValue = "false", matchIfMissing = true)
     public static class NoCacheConfiguration {
         @Bean
-        public CacheManager productServiceCacheManager() {
+        public CacheManager currencyConverterClientCacheManager() {
             SimpleCacheManager cacheManager = new SimpleCacheManager();
-            cacheManager.setCaches(Collections.singletonList(new NoOpCache(PRODUCT_CACHE_NAME)));
+            cacheManager.setCaches(Collections.singletonList(new NoOpCache(CURRENCY_CACHE_NAME)));
             return cacheManager;
         }
     }

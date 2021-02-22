@@ -26,3 +26,10 @@ product:
   cache:
     enabled: true
     duration: 1h
+
+currency:
+  cache:
+    enabled: true
+    duration: 1h
+  web-service:
+    endpoint: https://api.exchangeratesapi.io
