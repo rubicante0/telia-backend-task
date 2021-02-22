@@ -38,3 +38,7 @@ security:
   web:
     login: backend
     password: backend
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
